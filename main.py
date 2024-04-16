@@ -33,6 +33,13 @@ class Driver:
         password_input.send_keys("K1234567890k")
         password_btn = self.driver.find_element(By.XPATH, "//*[@data-testid='signup-login-submit-btn']")
         password_btn.click()
-        time.sleep(12)
+        
+    def search_location(self, input_str):
+        search_input = self.driver.find_element(By.XPATH, "//*[@data-testid='structured-search-input-field-query']")
+        search_input.send_keys(input_str, Keys.ENTER)
+        search_btn = self.driver.find_element(By.XPATH, "//*[@data-testid='structured-search-input-search-button']")
+        search_btn.click()
+        time.sleep(15)
         
 scrape = Driver(url)
+scrape.search_location("diani")
